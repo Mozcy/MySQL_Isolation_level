@@ -77,7 +77,7 @@ public class ReadUncommitted {
                     resultSet.next();
                     int age = resultSet.getInt("age");
                     if (age == 10) {
-                        log.info("线程:" + Thread.currentThread().getName() + " 脏读: age=" + age);
+                        log.info("线程: " + Thread.currentThread().getName() + " 脏读: age=" + age);
                         flag = false;
                     }
                 }
