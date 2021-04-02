@@ -59,6 +59,7 @@ public class ReadCommitted {
             Connection conn = JdbcUtils.getConnection();
             try {
                 conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+                conn.setAutoCommit(false);
                 String sql = "select * from user";
                 PreparedStatement statement = conn.prepareStatement(sql);
                 while (flag) {
@@ -75,6 +76,7 @@ public class ReadCommitted {
                         log.info("线程: " + Thread.currentThread().getName() + " 获取值: age=" + age);
                     }
                 }
+                conn.commit();
             } catch (Exception e) {
                 e.printStackTrace();
             }
